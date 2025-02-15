@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KathaLense - Photography</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Include EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init('yfOpO-h-47oaJguXH'); // Initialize EmailJS with your Public Key
+        })();
+    </script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1>KathaLense</h1>
+            <p>Capturing Moments, Creating Memories</p>
+        </div>
+    </header>
+
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- Home Section -->
+    <section id="home" class="section">
+        <div class="container">
+            <h2>Welcome to KathaLense</h2>
+            <p>Crafting stories through every shot</p>
+        </div>
+    </section>
+
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section">
+        <div class="container">
+            <h2>Portfolio</h2>
+            <div class="slideshow">
+                <div class="slides">
+                    <img src="samir.jpg" alt="Photo 1">
+                    <img src="Kamala2.JPG" alt="Photo 2">
+                    <img src="kausila.jpg" alt="Photo 3">
+                    <img src="Samir2.JPG" alt="Photo 4">
+                </div>
+                <!-- Navigation Dots -->
+                <div class="dots">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>At KathaLens, we believe every moment tells a story. Based in Columbus, Ohio, our mission is to capture the essence of life through the lens, turning fleeting moments into lasting memories. The name "Katha" means "story" in Sanskrit, and that’s exactly what we aim to craft with every shot — a visual narrative that speaks to the heart. Whether it's a wedding, a portrait, or an event, we're here to tell your unique story, one frame at a time.
+
+
+                We specialize in portraits, including senior and graduation pictures, as well as event and real estate photography. Let us help you preserve your story!</p>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <p>Let's create something beautiful together! Reach out to me for bookings or inquiries.</p>
+            <form id="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+               
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+               
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+               
+                <button type="submit">Send</button>
+            </form>
+            <span id="msg"></span>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 KathaLense. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/katha.lens" target="_blank">
+                    <img src="instagram-icon.png" alt="Instagram" class="social-icon">
+                    katha.lens
+                </a>
+                <a href="mailto:kathalens2024@gmail.com">
+                    <img src="email-icon.png" alt="Email" class="social-icon">
+                    kathalens2024@gmail.com
+                </a>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- JavaScript for Slideshow -->
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelector(".slides");
+        const dots = document.querySelectorAll(".dot");
+
+
+        // Function to show the current slide
+        function showSlide(index) {
+            if (index >= slides.children.length) slideIndex = 0;
+            if (index < 0) slideIndex = slides.children.length - 1;
+
+
+            // Move the slides container
+            slides.style.transform = `translateX(${-slideIndex * 100}%)`;
+
+
+            // Update active dot
+            dots.forEach((dot, i) => {
+                dot.classList.toggle("active", i === slideIndex);
+            });
+        }
+
+
+        // Function to move to the next slide
+        function nextSlide() {
+            slideIndex++;
+            showSlide(slideIndex);
+        }
+
+
+        // Automatically change slides every 5 seconds
+        setInterval(nextSlide, 5000);
+
+
+        // Function to handle dot clicks
+        function currentSlide(index) {
+            slideIndex = index - 1;
+            showSlide(slideIndex);
+        }
+
+
+        // Initialize the first slide
+        showSlide(slideIndex);
+    </script>
+
+
+    <!-- JavaScript for Form Submission -->
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value
+            };
+
+
+            console.log('Form Data:', formData); // Debugging: Log form data
+
+
+            // Send email using EmailJS
+            emailjs.send('service_wqpsl2e', 'template_5397ite', formData)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text); // Debugging: Log success
+                    document.getElementById('msg').innerText = 'Message sent successfully!';
+                    document.getElementById('contact-form').reset(); // Clear the form
+                }, function(error) {
+                    console.log('FAILED...', error); // Debugging: Log error
+                    document.getElementById('msg').innerText = 'Failed to send message. Please try again.';
+                });
+        });
+    </script>
+</body>
+</html>
+

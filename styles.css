@@ -1,0 +1,256 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #ffffff; /* White text */
+    background-color: #1a1a1a; /* Dark background */
+}
+
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+
+/* Header Styles */
+header {
+    background: url('photo2.JPG') no-repeat center center/cover;
+    color: #ffffff;
+    padding: 60px 0; /* Reduced padding to reduce the gap */
+    text-align: center;
+    position: relative;
+}
+
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6); /* Dark overlay for better text visibility */
+}
+
+
+header h1 {
+    font-size: 3rem;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+
+header p {
+    font-size: 1.5rem;
+    margin: 10px 0 0;
+    position: relative;
+    z-index: 1;
+}
+
+
+/* Navigation Styles */
+nav {
+    background: #333333; /* Darker gray for contrast */
+    color: #ffffff;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: opacity 0.3s ease;
+}
+
+
+nav ul li a:hover {
+    opacity: 0.8; /* Subtle hover effect */
+}
+
+
+/* Section Styles */
+.section {
+    padding: 40px 0; /* Reduced padding to reduce the gap */
+    text-align: center;
+    background-color: #1a1a1a; /* Dark background */
+}
+
+
+.section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ffffff; /* White for headings */
+}
+
+
+.section p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #ffffff; /* White text for better readability */
+}
+
+
+/* Slideshow Styles */
+.slideshow {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
+
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%; /* Ensure slides container takes full width */
+}
+
+
+.slides img {
+    width: 100%; /* Each image takes full width of the slideshow */
+    height: 500px; /* Adjust height as needed */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    flex-shrink: 0; /* Prevents images from shrinking */
+    border-radius: 10px;
+}
+
+
+/* Navigation Dots */
+.dots {
+    text-align: center;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+}
+
+
+.dot {
+    cursor: pointer;
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: #666666; /* Gray for dots */
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+
+.dot.active, .dot:hover {
+    background-color: #ffffff; /* White for active/hover state */
+}
+
+
+/* Contact Form Styles */
+form {
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: left;
+}
+
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #ffffff; /* White for labels */
+}
+
+
+form input, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #444444; /* Subtle border */
+    border-radius: 5px;
+    background-color: #333333; /* Dark input background */
+    color: #ffffff; /* White text */
+}
+
+
+form button {
+    background: #444444; /* Neutral gray for button */
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+
+form button:hover {
+    background: #555555; /* Slightly lighter gray on hover */
+}
+
+
+/* Footer Styles */
+footer {
+    background: #333333; /* Darker gray for contrast */
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+
+footer p {
+    margin: 0 0 10px;
+}
+
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: opacity 0.3s ease;
+}
+
+
+.social-links a:hover {
+    opacity: 0.8; /* Subtle hover effect */
+}
+
+
+.social-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
