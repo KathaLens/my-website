@@ -22,7 +22,6 @@
         </div>
     </header>
 
-
     <!-- Navigation Bar -->
     <nav>
         <ul>
@@ -33,7 +32,6 @@
         </ul>
     </nav>
 
-
     <!-- Home Section -->
     <section id="home" class="section">
         <div class="container">
@@ -42,17 +40,30 @@
         </div>
     </section>
 
-
     <!-- Portfolio Section -->
     <section id="portfolio" class="section">
         <div class="container">
             <h2>Portfolio</h2>
             <div class="slideshow">
                 <div class="slides">
-                    <img src="samir.jpg" alt="Photo 1">
-                    <img src="Kamala2.JPG" alt="Photo 2">
-                    <img src="kausila.jpg" alt="Photo 3">
-                    <img src="Samir2.JPG" alt="Photo 4">
+                    <div class="slide">
+                        <img src="kausila.jpg" alt="Photo 1">
+                    </div>
+                    <div class="slide">
+                        <img src="samir.jpg">
+                    </div>
+                    <div class="slide">
+                        <img src="aarati.jpg" alt="Photo 3">
+                    </div>
+                    <div class="slide">
+                        <img src="Kamala2.JPG" alt="Photo 4">
+                    </div>
+                    <div class="slide">
+                        <img src="000003 copy-fotor-20250217212312.jpg" alt="Photo 5">
+                    </div>
+                    <div class="slide">
+                        <img src="grad.jpg" alt="Photo 6">
+                    </div>
                 </div>
                 <!-- Navigation Dots -->
                 <div class="dots">
@@ -60,45 +71,60 @@
                     <span class="dot" onclick="currentSlide(2)"></span>
                     <span class="dot" onclick="currentSlide(3)"></span>
                     <span class="dot" onclick="currentSlide(4)"></span>
+                    <span class="dot" onclick="currentSlide(5)"></span>
+                    <span class="dot" onclick="currentSlide(6)"></span>
                 </div>
             </div>
         </div>
     </section>
 
-
     <!-- About Section -->
     <section id="about" class="section">
         <div class="container">
             <h2>About Us</h2>
-            <p>At KathaLens, we believe every moment tells a story. Based in Columbus, Ohio, our mission is to capture the essence of life through the lens, turning fleeting moments into lasting memories. The name "Katha" means "story" in Sanskrit, and that’s exactly what we aim to craft with every shot — a visual narrative that speaks to the heart. Whether it's a wedding, a portrait, or an event, we're here to tell your unique story, one frame at a time.
-
-
-                We specialize in portraits, including senior and graduation pictures, as well as event and real estate photography. Let us help you preserve your story!</p>
+            <p>At KathaLens, we believe every moment tells a story. Based in Columbus, Ohio, our mission is to capture the essence of life through the lens, turning fleeting moments into lasting memories. The name "Katha" means "story" in Sanskrit, and that’s exactly what we aim to craft with every shot — a visual narrative that speaks to the heart. Whether it's a wedding, a portrait, or an event, we're here to tell your unique story, one frame at a time.</p>
         </div>
     </section>
-
 
     <!-- Contact Section -->
     <section id="contact" class="section">
         <div class="container">
             <h2>Contact Me</h2>
-            <p>Let's create something beautiful together! Reach out to me for bookings or inquiries.</p>
+            <p>Let's create something beautiful together! Reach out to us for bookings or inquiries.</p>
             <form id="contact-form">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
-               
+
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
-               
+
+                <label for="session-type">What type of session are you looking for?</label>
+                <select id="session-type" name="session-type" required>
+                    <option value="Graduation">Graduation</option>
+                    <option value="Senior Picture">Senior Picture</option>
+                    <option value="Headshot">Headshot</option>
+                    <option value="Fashion">Fashion</option>
+                    <option value="Casual">Casual</option>
+                    <option value="Birthday">Birthday</option>
+                    <option value="Pasni">Pasni</option>
+                    <option value="Short Video">Short Video</option>
+                    <option value="Wedding Video and Photos">Wedding Video and Photos</option>
+                    <option value="Wedding Video ONLY">Wedding Video ONLY</option>
+                    <option value="Wedding Photos ONLY">Wedding Photos ONLY</option>
+                    <option value="Engagement">Engagement</option>
+                    <option value="Anniversary">Anniversary</option>
+                    <option value="Movie">Movie</option>
+                    <option value="Music Video">Music Video</option>
+                </select>
+
                 <label for="message">Message:</label>
                 <textarea id="message" name="message" rows="5" required></textarea>
-               
+
                 <button type="submit">Send</button>
             </form>
             <span id="msg"></span>
         </div>
     </section>
-
 
     <!-- Footer -->
     <footer>
@@ -117,83 +143,62 @@
         </div>
     </footer>
 
-
     <!-- JavaScript for Slideshow -->
     <script>
         let slideIndex = 0;
         const slides = document.querySelector(".slides");
         const dots = document.querySelectorAll(".dot");
 
-
-        // Function to show the current slide
         function showSlide(index) {
             if (index >= slides.children.length) slideIndex = 0;
             if (index < 0) slideIndex = slides.children.length - 1;
 
-
-            // Move the slides container
             slides.style.transform = `translateX(${-slideIndex * 100}%)`;
 
-
-            // Update active dot
             dots.forEach((dot, i) => {
                 dot.classList.toggle("active", i === slideIndex);
             });
         }
 
-
-        // Function to move to the next slide
         function nextSlide() {
             slideIndex++;
             showSlide(slideIndex);
         }
 
-
-        // Automatically change slides every 5 seconds
         setInterval(nextSlide, 5000);
 
-
-        // Function to handle dot clicks
         function currentSlide(index) {
             slideIndex = index - 1;
             showSlide(slideIndex);
         }
 
-
-        // Initialize the first slide
         showSlide(slideIndex);
     </script>
-
 
     <!-- JavaScript for Form Submission -->
     <script>
         document.getElementById('contact-form').addEventListener('submit', function(event) {
             event.preventDefault();
 
-
-            // Get form data
+            // Collect form data
             const formData = {
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
+                sessionType: document.getElementById('session-type').value, // New field
                 message: document.getElementById('message').value
             };
-
-
-            console.log('Form Data:', formData); // Debugging: Log form data
-
 
             // Send email using EmailJS
             emailjs.send('service_wqpsl2e', 'template_5397ite', formData)
                 .then(function(response) {
-                    console.log('SUCCESS!', response.status, response.text); // Debugging: Log success
+                    // Show success message
                     document.getElementById('msg').innerText = 'Message sent successfully!';
                     document.getElementById('contact-form').reset(); // Clear the form
                 }, function(error) {
-                    console.log('FAILED...', error); // Debugging: Log error
+                    // Show error message
                     document.getElementById('msg').innerText = 'Failed to send message. Please try again.';
                 });
         });
     </script>
 </body>
 </html>
-
